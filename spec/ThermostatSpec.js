@@ -2,6 +2,7 @@
 
 describe('Thermostat', function(){
   var thermostat;
+  var i;
 
 beforeEach(function(){
     thermostat = new Thermostat();
@@ -12,16 +13,27 @@ beforeEach(function(){
   });
 
   it('can increase the temerature', function() {
-    thermostat.increaseTemp();
-    thermostat.increaseTemp();
-    expect(thermostat.getTemperature()).toEqual(22);
+    for (i = 0; i < 6; i++) {
+      thermostat.increaseTemp();
+    }
+    expect(thermostat.getTemperature()).toEqual(26);
   });
 
   it('can decrease the temerature', function() {
-    thermostat.decreaseTemp();
-    thermostat.decreaseTemp();
-    expect(thermostat.getTemperature()).toEqual(18);
+    for (i = 0; i < 5; i++) {
+      thermostat.decreaseTemp();
+    }
+    expect(thermostat.getTemperature()).toEqual(15);
+  });
+
+  it('has a minimum temperature of 10 degrees', function(){
+    for (i = 0; i < 10; i++) {
+      thermostat.decreaseTemp();
+    }
+
+    expect(function() {
+      thermostat.decreaseTemp();
+    }).toThrowError("minimum temperature of 10 degrees reached");
   });
 
 });
-

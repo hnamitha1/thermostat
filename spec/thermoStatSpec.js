@@ -45,7 +45,7 @@ describe("Thermostat" ,function(){
       expect(thermostat.powerSave).toEqual(true);
     });
  });
- 
+
  it('has a maximum temperature of 32 when powersave mode is off', function(){
     thermostat.temperature = 32;
     thermostat.powerSaveSwitch();
@@ -54,5 +54,34 @@ describe("Thermostat" ,function(){
     }).toThrowError('Highest temperature is 32 in powersave mode off!');
  });
 
+ it('powersave mode is on by default', function(){
+   expect(thermostat.powerSave).toEqual(true);
+ });
+
+ it('reset temperature', function(){
+  thermostat.temperature = 15;
+  thermostat.resetTemp();
+  expect(thermostat.temperature).toEqual(20);
+ });
+
+ describe('#energyUsage', function(){
+
+  it('shows green if temperature below 18',function(){
+    thermostat.temperature = 15;
+    expect(thermostat.energyUsage()).toEqual('green');
+  });
+
+
+  it('shows yellow if temperature is between 18 and 25',function(){
+    thermostat.temperature = 22;
+    expect(thermostat.energyUsage()).toEqual('yellow');
+  });
+
+  it('shows red if temperature above 25',function(){
+    thermostat.temperature = 28;
+    expect(thermostat.energyUsage()).toEqual('red');
+  });
+
+ });
 
 });

@@ -10,7 +10,7 @@ Thermostat.prototype.incrTemp = function() {
       throw new Error('Highest temperature is 25 in powersave mode!');
   } else {
 	    this.temperature++;
-  }   
+  }
 };
 
 Thermostat.prototype.decrTemp = function() {
@@ -23,3 +23,17 @@ Thermostat.prototype.decrTemp = function() {
 Thermostat.prototype.powerSaveSwitch = function(){
   this.powerSave = !this.powerSave;
 };
+
+Thermostat.prototype.resetTemp = function(){
+  this.temperature = 20;
+}
+
+Thermostat.prototype.energyUsage = function(){
+  if (this.temperature < 18) {
+    return 'green';
+  } else if (this.temperature > 25) {
+    return 'red';
+  } else {
+    return 'yellow';
+  }
+}

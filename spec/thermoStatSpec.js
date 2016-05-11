@@ -68,18 +68,18 @@ describe("Thermostat" ,function(){
 
   it('shows green if temperature below 18',function(){
     thermostat.temperature = 15;
-    expect(thermostat.energyUsage()).toEqual('green');
+    expect(thermostat.energyUsage()).toEqual('low-usage');
   });
 
 
   it('shows yellow if temperature is between 18 and 25',function(){
     thermostat.temperature = 22;
-    expect(thermostat.energyUsage()).toEqual('yellow');
+    expect(thermostat.energyUsage()).toEqual('medium-usage');
   });
 
   it('shows red if temperature above 25',function(){
     thermostat.temperature = 28;
-    expect(thermostat.energyUsage()).toEqual('red');
+    expect(thermostat.energyUsage()).toEqual('high-usage');
   });
 
  });

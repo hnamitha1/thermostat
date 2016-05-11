@@ -5,3 +5,7 @@ function Thermostat(){
 Thermostat.prototype.incrTemp = function() {
 	this.temperature++;
 };
+
+Thermostat.prototype.decrTemp = function() {
+	this.temperature--;
+};

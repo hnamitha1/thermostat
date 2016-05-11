@@ -2,7 +2,6 @@
 
 describe('Thermostat', function(){
   var thermostat;
-  var i;
 
 beforeEach(function(){
     thermostat = new Thermostat();
@@ -13,27 +12,55 @@ beforeEach(function(){
   });
 
   it('can increase the temerature', function() {
-    for (i = 0; i < 6; i++) {
+    for (var i = 0; i < 3; i++) {
       thermostat.increaseTemp();
     }
-    expect(thermostat.getTemperature()).toEqual(26);
+    expect(thermostat.getTemperature()).toEqual(23);
   });
 
   it('can decrease the temerature', function() {
-    for (i = 0; i < 5; i++) {
+    for (var i = 0; i < 5; i++) {
       thermostat.decreaseTemp();
     }
     expect(thermostat.getTemperature()).toEqual(15);
   });
 
   it('has a minimum temperature of 10 degrees', function(){
-    for (i = 0; i < 10; i++) {
+    for (var i = 0; i < 12; i++) {
       thermostat.decreaseTemp();
     }
+    expect(thermostat.getTemperature()).toEqual(10);
+  });
 
-    expect(function() {
-      thermostat.decreaseTemp();
-    }).toThrowError("minimum temperature of 10 degrees reached");
+  describe('Power Saving Mode', function() {
+
+    it('has power saving mode on by default', function() {
+      expect(thermostat.isPowerSavingModeOn()).toBe(true);
+    });
+
+    it('can switch PSM on and off', function() {
+      thermostat.switchPowerSavingModeOff();
+      expect(thermostat.isPowerSavingModeOn()).toBe(false);
+      thermostat.switchPowerSavingModeOn();
+      expect(thermostat.isPowerSavingModeOn()).toBe(true);
+    });
+
+
+    it('when on has a maximum temperature of 25 degrees', function() {
+      for (var i = 0; i < 10; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.getTemperature()).toEqual(25);
+    });
+
+    it('when off has a maximum temperature of 32 degrees', function() {
+      thermostat.switchPowerSavingModeOff();
+      for (var i = 0; i < 20; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.getTemperature()).toEqual(32);
+    });
+
   });
 
 });

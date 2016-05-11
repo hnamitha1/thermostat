@@ -43,6 +43,27 @@ beforeEach(function(){
     });
   });
 
+  describe('Energy Usage', function() {
+    it('Shows green when temperature is less than 18', function(){
+      for (var i = 0; i < 3; i++) {
+        thermostat.decreaseTemp();
+      }
+      expect(thermostat.energyUsage()).toEqual("Green");
+    });
+    it('Shows yellow when temperature is less than 25', function(){
+      for (var i = 0; i < 4; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.energyUsage()).toEqual("Yellow");
+    });
+    it('Shows red when temperature is greater than 24', function(){
+      for (var i = 0; i < 5; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.energyUsage()).toEqual("Red");
+    });
+  });
+
   describe('Power Saving Mode', function() {
     it('has power saving mode on by default', function() {
       expect(thermostat.isPowerSavingModeOn()).toBe(true);

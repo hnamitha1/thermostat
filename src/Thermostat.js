@@ -46,3 +46,9 @@ Thermostat.prototype.isMaximumTemperature = function() {
 Thermostat.prototype.resetTemperature = function() {
   return this._temperature = this.DEFAULT_START_TEMP;
 };
+
+Thermostat.prototype.energyUsage = function() {
+  if( this._temperature < 18 ){return "Green";}
+  if( this._temperature > 24 ){return "Red";}
+  return "Yellow";
+};

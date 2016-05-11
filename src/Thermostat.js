@@ -8,6 +8,8 @@ function Thermostat(){
   this.MAX_LIMIT_PSM_OFF = 32
   this.MAX_LIMIT_PSM_ON = 25
   this.powerSavingMode = true
+  this.LOWER_ENERGY_LIMIT = 18
+  this.UPPER_ENERGY_LIMIT = 25
 }
 
 Thermostat.prototype.getTemperature = function() {
@@ -48,7 +50,7 @@ Thermostat.prototype.resetTemperature = function() {
 };
 
 Thermostat.prototype.energyUsage = function() {
-  if( this._temperature < 18 ){return "Green";}
-  if( this._temperature > 24 ){return "Red";}
-  return "Yellow";
+  if( this._temperature < this.LOWER_ENERGY_LIMIT ){return "Low Usage";}
+  if( this._temperature >= this.UPPER_ENERGY_LIMIT ){return "High Usage";}
+  return "Medium Usage";
 };

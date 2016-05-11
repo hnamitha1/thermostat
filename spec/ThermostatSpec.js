@@ -44,23 +44,23 @@ beforeEach(function(){
   });
 
   describe('Energy Usage', function() {
-    it('Shows green when temperature is less than 18', function(){
+    it('Shows "Low Usage" when temperature is less than 18', function(){
       for (var i = 0; i < 3; i++) {
         thermostat.decreaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("Green");
+      expect(thermostat.energyUsage()).toEqual("Low Usage");
     });
-    it('Shows yellow when temperature is less than 25', function(){
+    it('Shows "Medium Usage" when temperature is less than 25', function(){
       for (var i = 0; i < 4; i++) {
         thermostat.increaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("Yellow");
+      expect(thermostat.energyUsage()).toEqual("Medium Usage");
     });
-    it('Shows red when temperature is greater than 24', function(){
+    it('Shows "High Usage" when temperature is greater than 24', function(){
       for (var i = 0; i < 5; i++) {
         thermostat.increaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("Red");
+      expect(thermostat.energyUsage()).toEqual("High Usage");
     });
   });
 

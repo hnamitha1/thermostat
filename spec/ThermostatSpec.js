@@ -11,4 +11,11 @@ beforeEach(function(){
     expect(thermostat.getTemperature()).toEqual(20);
   });
 
+  it('can increase the temerature', function() {
+    thermostat.increaseTemp();
+    thermostat.increaseTemp();
+    expect(thermostat.getTemperature()).toEqual(22);
+  });
+
 });
+

@@ -38,13 +38,6 @@ Thermostat.prototype.switchPowerSavingModeOff = function() {
   this.powerSavingMode = false;
 };
 
-Thermostat.prototype.isMaximumTemperature = function() {
-  if (this.isPowerSavingModeOn() === false) {
-    return this._temperature === this.MAX_LIMIT_PSM_OFF;
-  }
-  return this._temperature === this.MAX_LIMIT_PSM_ON;
-};
-
 Thermostat.prototype.resetTemperature = function() {
   return this._temperature = this.DEFAULT_START_TEMP;
 };
@@ -53,4 +46,12 @@ Thermostat.prototype.energyUsage = function() {
   if( this._temperature < this.LOWER_ENERGY_LIMIT ){return "Low Usage";}
   if( this._temperature >= this.UPPER_ENERGY_LIMIT ){return "High Usage";}
   return "Medium Usage";
+};
+
+
+Thermostat.prototype.isMaximumTemperature = function() {
+  if (this.isPowerSavingModeOn() === false) {
+    return this._temperature === this.MAX_LIMIT_PSM_OFF;
+  }
+  return this._temperature === this.MAX_LIMIT_PSM_ON;
 };

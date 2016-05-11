@@ -7,33 +7,43 @@ beforeEach(function(){
     thermostat = new Thermostat();
   });
 
-  it('has a starting temperature of 20 degrees', function(){
-    expect(thermostat.getTemperature()).toEqual(20);
+  describe('Defaults for thermostat', function() {
+    it('has a starting temperature of 20 degrees', function(){
+      expect(thermostat.getTemperature()).toEqual(20);
+    });
+
+    it('has a minimum temperature of 10 degrees', function(){
+      for (var i = 0; i < 12; i++) {
+        thermostat.decreaseTemp();
+      }
+      expect(thermostat.getTemperature()).toEqual(10);
+    });
   });
 
-  it('can increase the temerature', function() {
-    for (var i = 0; i < 3; i++) {
-      thermostat.increaseTemp();
-    }
-    expect(thermostat.getTemperature()).toEqual(23);
-  });
+  describe('Changes to thermostat', function() {
+    it('can increase the temerature', function() {
+      for (var i = 0; i < 3; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.getTemperature()).toEqual(23);
+    });
 
-  it('can decrease the temerature', function() {
-    for (var i = 0; i < 5; i++) {
-      thermostat.decreaseTemp();
-    }
-    expect(thermostat.getTemperature()).toEqual(15);
-  });
+    it('can decrease the temerature', function() {
+      for (var i = 0; i < 5; i++) {
+        thermostat.decreaseTemp();
+      }
+      expect(thermostat.getTemperature()).toEqual(15);
+    });
 
-  it('has a minimum temperature of 10 degrees', function(){
-    for (var i = 0; i < 12; i++) {
-      thermostat.decreaseTemp();
-    }
-    expect(thermostat.getTemperature()).toEqual(10);
+    it('can be reset', function() {
+      for (var i = 0; i < 3; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.resetTemperature()).toEqual(20);
+    });
   });
 
   describe('Power Saving Mode', function() {
-
     it('has power saving mode on by default', function() {
       expect(thermostat.isPowerSavingModeOn()).toBe(true);
     });
@@ -44,7 +54,6 @@ beforeEach(function(){
       thermostat.switchPowerSavingModeOn();
       expect(thermostat.isPowerSavingModeOn()).toBe(true);
     });
-
 
     it('when on has a maximum temperature of 25 degrees', function() {
       for (var i = 0; i < 10; i++) {
@@ -60,7 +69,5 @@ beforeEach(function(){
       }
       expect(thermostat.getTemperature()).toEqual(32);
     });
-
   });
-
 });

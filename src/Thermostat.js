@@ -1,7 +1,8 @@
 'use strict';
 
 function Thermostat(){
-  this._temperature = 20
+  this.DEFAULT_START_TEMP = 20
+  this._temperature = this.DEFAULT_START_TEMP
   this.TEMP_CHANGE = 1
   this.MIN_TEMP = 10
   this.MAX_LIMIT_PSM_OFF = 32
@@ -40,4 +41,8 @@ Thermostat.prototype.isMaximumTemperature = function() {
     return this._temperature === this.MAX_LIMIT_PSM_OFF;
   }
   return this._temperature === this.MAX_LIMIT_PSM_ON;
+};
+
+Thermostat.prototype.resetTemperature = function() {
+  return this._temperature = this.DEFAULT_START_TEMP;
 };

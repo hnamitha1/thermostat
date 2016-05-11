@@ -4,10 +4,13 @@ function Thermostat(){
 };
 
 Thermostat.prototype.incrTemp = function() {
-  if (this.powerSave && this.temperature == 25) {
-    throw new Error('Highest temperature is 25 in powersave mode!');
-  }
-	this.temperature++;
+  if (!this.powerSave && this.temperature ==32){
+      throw new Error('Highest temperature is 32 in powersave mode off!');
+  } else if (this.powerSave && this.temperature == 25){
+      throw new Error('Highest temperature is 25 in powersave mode!');
+  } else {
+	    this.temperature++;
+  }   
 };
 
 Thermostat.prototype.decrTemp = function() {
@@ -15,4 +18,8 @@ Thermostat.prototype.decrTemp = function() {
     throw new Error('lowest temperature is 10!');
   }
 	this.temperature--;
+};
+
+Thermostat.prototype.powerSaveSwitch = function(){
+  this.powerSave = !this.powerSave;
 };

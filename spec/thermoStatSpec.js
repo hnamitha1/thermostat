@@ -33,4 +33,26 @@ describe("Thermostat" ,function(){
       thermostat.incrTemp()
     }).toThrowError('Highest temperature is 25 in powersave mode!');
  });
+
+ describe("#powerSaveSwitch", function(){
+    it("turns off power save mode when it is on", function(){
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSave).toEqual(false);
+    });
+    it("turns on power save mode when it is off", function(){
+      thermostat.powerSave = false;
+      thermostat.powerSaveSwitch();
+      expect(thermostat.powerSave).toEqual(true);
+    });
+ });
+ 
+ it('has a maximum temperature of 32 when powersave mode is off', function(){
+    thermostat.temperature = 32;
+    thermostat.powerSaveSwitch();
+    expect(function(){
+      thermostat.incrTemp()
+    }).toThrowError('Highest temperature is 32 in powersave mode off!');
+ });
+
+
 });

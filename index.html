@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Thermostat</title>
+	</head>
+	<body>
+		<!-- input :incrtemp,decrtemp.resettemp,powersaveswitch
+			 output tempr,powersave,energyUsage -->
+		<h1>Thermostat</h1>
+		<div>
+			<button id="inctem">increase</button>
+			<button id="dectem">decrease</button>	
+			<button id="reset">Reset</button>
+			<button id="posasw">Powersave</button> 
+		</div>
+		<div>
+			<p>Temperature : <span id="temperature"></span></p>
+			<p>Powersave : <span id="powsave"></span></p>
+			<p>Usage :<span id="usage"></span></p>
+		</div>
+	
+		<script src="src/thermoStat.js"></script>
+	</body>
+</html>

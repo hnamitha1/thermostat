@@ -4,11 +4,12 @@
 
   <head>
     <title>Thermostat</title>
+    <script src='jquery-1.12.3.js'></script>
   </head>
 
   <body>
     <section>
-    <h1 id="temperature">Temperature!</h1>
+    <h1 id="temperature">Thermometer</h1>
     <p>
       <button id="temperature-up">+</button>
       <button id="temperature-down">-</button>
@@ -17,9 +18,33 @@
       <button id="powersaving-on">PSM on</button>
       <button id="powersaving-off">PSM off</button>
     </p>
+    <p>
+      Temperature: <span id='temp'></span>
+    </p>
     </section>
 
     <script src='src/Thermostat.js'></script>
+    <script>
+
+      $(document).ready(function() {
+
+        thermostat = new Thermostat
+        $('#temp').text(thermostat.getTemperature())
+
+        $('#temperature-up').click(function(){
+          thermostat.increaseTemp()
+          $('#temp').text(thermostat.getTemperature())
+        });
+
+        $('#temperature-down').click(function(){
+          thermostat.decreaseTemp()
+          $('#temp').text(thermostat.getTemperature())
+        });
+      });
+
+
+
+    </script>
 
   </body>
 

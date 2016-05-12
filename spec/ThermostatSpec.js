@@ -48,19 +48,19 @@ beforeEach(function(){
       for (var i = 0; i < 3; i++) {
         thermostat.decreaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("Low Usage");
+      expect(thermostat.energyUsage()).toEqual("low-usage");
     });
     it('Shows "Medium Usage" when temperature is less than 25', function(){
       for (var i = 0; i < 4; i++) {
         thermostat.increaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("Medium Usage");
+      expect(thermostat.energyUsage()).toEqual("medium-usage");
     });
     it('Shows "High Usage" when temperature is greater than 24', function(){
       for (var i = 0; i < 5; i++) {
         thermostat.increaseTemp();
       }
-      expect(thermostat.energyUsage()).toEqual("High Usage");
+      expect(thermostat.energyUsage()).toEqual("high-usage");
     });
   });
 

@@ -43,9 +43,9 @@ Thermostat.prototype.resetTemperature = function() {
 };
 
 Thermostat.prototype.energyUsage = function() {
-  if( this._temperature < this.LOWER_ENERGY_LIMIT ){return "Low Usage";}
-  if( this._temperature >= this.UPPER_ENERGY_LIMIT ){return "High Usage";}
-  return "Medium Usage";
+  if( this._temperature < this.LOWER_ENERGY_LIMIT ){return "low-usage";}
+  if( this._temperature >= this.UPPER_ENERGY_LIMIT ){return "high-usage";}
+  return "medium-usage";
 };
 
 

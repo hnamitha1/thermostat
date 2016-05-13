@@ -11,25 +11,30 @@
   <body>
     <section>
     <h1 id="temperature">Thermometer</h1>
-    <p>
-      <button id="temperature-up">+</button>
-      <button id="temperature-down">-</button>
-      <button id="temperature-reset">reset</button>
-      power saving mode is <span id="power-saving-status">on</span>
-      <button id="powersaving-on">PSM on</button>
-      <button id="powersaving-off">PSM off</button>
-    </p>
-    <p>
-      <section>
+    <div id="left">
+      <button id="temperature-up" class ="button">+</button><br>
+      <button id="temperature-down" class="button">-</button><br>
+      <button id="temperature-reset" class="button">reset</button><br>
+      <button id="powersaving-on" class="button">PSM on</button><br>
+      <button id="powersaving-off" class = "button">PSM off</button><br>
+    </div>
+    <div id="right"> 
+      <div id="top">
+        <p>
+          Temperature <span id='temp'></span><br> <br>
+          PowerSave <span id="psave">ON</span>
+        </p>
+      </div>
+      <div id="bottom">
         <form id="select-city">
           <input id="current-city" type="text" placeholder="Enter a city"></input>
           <input type="submit"></input>
         </form>
-      </section>
-      Current Temperature Outside: <strong id='outside-temp'></strong><br>
-      PowerSave: <span id="psave">ON</span><br>
-      Temperature: <strong id='temp'></strong>
-    </p>
+        
+        Current Temperature Outside: <strong id='outside-temp'></strong><br>
+      </div>
+    </div> 
+    <div id="clear"></div> 
     </section>
 
     <script src='src/Thermostat.js'></script>
